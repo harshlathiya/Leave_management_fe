@@ -7,24 +7,30 @@ export type FieldProps = {
   id: string;
   name: string;
   title: string;
-  type: string; 
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  type: string;
+  onChange: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => void;
+  onBlur: (
+    e: React.FocusEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => void;
   value: string;
   options?: Option[] | any;
-  setFieldValue?:any;
+  setFieldValue?: any;
   error?: string;
 };
-
 
 export type TextInputProps = {
   field: FieldProps;
   touched?: boolean;
   error?: string | undefined;
   options?: Option[] | any;
-  
 };
-const TextInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
+const TextInput: React.FC<TextInputProps> = ({ field, touched, error }) => {
   const { id, name, title, type, onChange, onBlur, value } = field;
 
   return (
@@ -52,9 +58,9 @@ const TextInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
       </div>
     </>
   );
-}
+};
 
-const TextArea: React.FC<TextInputProps> =({ field, touched, error }) =>{
+const TextArea: React.FC<TextInputProps> = ({ field, touched, error }) => {
   const { id, name, title, onChange, onBlur, value } = field;
 
   return (
@@ -81,9 +87,13 @@ const TextArea: React.FC<TextInputProps> =({ field, touched, error }) =>{
       </div>
     </>
   );
-}
+};
 
-const RadioButtonGroup: React.FC<TextInputProps> =({ field, touched, error }) =>{
+const RadioButtonGroup: React.FC<TextInputProps> = ({
+  field,
+  touched,
+  error,
+}) => {
   const { id, name, title, options, onChange, onBlur, value } = field;
 
   return (
@@ -91,7 +101,7 @@ const RadioButtonGroup: React.FC<TextInputProps> =({ field, touched, error }) =>
       <label className="block text-gray-700 text-sm font-bold mb-2">
         {title}
       </label>
-      {options.map((option:Option) => (
+      {options.map((option: Option) => (
         <label key={option.value} className="inline-flex items-center mr-4">
           <input
             type="radio"
@@ -113,11 +123,11 @@ const RadioButtonGroup: React.FC<TextInputProps> =({ field, touched, error }) =>
   );
 };
 
-const ImageInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
+const ImageInput: React.FC<TextInputProps> = ({ field, touched, error }) => {
   const { id, name, title, onChange, onBlur } = field;
 
-  const handleChange = (event:any) => {
-    onChange(event); 
+  const handleChange = (event: any) => {
+    onChange(event);
     if (event.currentTarget.files) {
       const file = event.currentTarget.files[0];
       field.setFieldValue(name, file);
@@ -147,12 +157,12 @@ const ImageInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
     </div>
   );
 };
-const DateInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
+const DateInput: React.FC<TextInputProps> = ({ field, touched, error }) => {
   const { id, name, title, onChange, onBlur, value } = field;
 
   const today = new Date();
   today.setDate(today.getDate());
-  const nextDay = today.toISOString().split("T")[0]; 
+  const nextDay = today.toISOString().split("T")[0];
 
   return (
     <div className="mb-4">
@@ -169,7 +179,7 @@ const DateInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
         onChange={onChange}
         onBlur={onBlur}
         value={value}
-        min={nextDay} // Set minimum date to next day
+        // min={nextDay} // Set minimum date to next day
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
       {touched && error ? (
@@ -179,7 +189,12 @@ const DateInput: React.FC<TextInputProps> =({ field, touched, error }) =>{
   );
 };
 
-const SelectInput: React.FC<TextInputProps>  = ({ field, touched, error , options}) => {
+const SelectInput: React.FC<TextInputProps> = ({
+  field,
+  touched,
+  error,
+  options,
+}) => {
   const { id, name, title, onChange, onBlur, value } = field;
 
   return (
@@ -198,8 +213,10 @@ const SelectInput: React.FC<TextInputProps>  = ({ field, touched, error , option
         value={value}
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       >
-        <option className="hidden" value="" selected>Select {title}</option>
-        {options.map((option:Option) => (
+        <option className="hidden" value="" selected>
+          Select {title}
+        </option>
+        {options.map((option: Option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
@@ -212,8 +229,12 @@ const SelectInput: React.FC<TextInputProps>  = ({ field, touched, error , option
   );
 };
 
-const SelectInputNormal: React.FC<TextInputProps>  = ({ field, touched, error  }) => {
-  const { id, name, title, onChange, onBlur, value , options} = field;
+const SelectInputNormal: React.FC<TextInputProps> = ({
+  field,
+  touched,
+  error,
+}) => {
+  const { id, name, title, onChange, onBlur, value, options } = field;
 
   return (
     <div className="mb-4">
@@ -232,7 +253,7 @@ const SelectInputNormal: React.FC<TextInputProps>  = ({ field, touched, error  }
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       >
         <option value="">Select {title}</option>
-        {options.map((option:Option) => (
+        {options.map((option: Option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
@@ -245,4 +266,12 @@ const SelectInputNormal: React.FC<TextInputProps>  = ({ field, touched, error  }
   );
 };
 
-export { TextInput, TextArea, RadioButtonGroup, ImageInput , DateInput , SelectInput , SelectInputNormal};
+export {
+  TextInput,
+  TextArea,
+  RadioButtonGroup,
+  ImageInput,
+  DateInput,
+  SelectInput,
+  SelectInputNormal,
+};

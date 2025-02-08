@@ -1,12 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { getApiCall } from "@/service/apiCall";
-import { columns } from "./columns";
+import { columns } from "../../../dashboard/columns";
 import { LeaveDetails } from "@/Utils/types";
-import { DataTable } from "./data-table";
-import LeaveChart from "./LeaveChart";
+import { DataTable } from "../../../dashboard/data-table";
+import LeaveChart from "../../../dashboard/LeaveChart";
 import Loading from "@/Components/Loading";
-import StudentFacultyComponent from "./StudentFacultyDashboard";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
@@ -74,8 +73,30 @@ function AdminComponent() {
         <Loading />
       ) : (
         <>
-          <StudentFacultyComponent />
-          
+          <div className="container mx-auto py-10">
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+              Leave Report
+            </h1>
+            <div id="leave-report">
+              <DataTable columns={columns} data={data} />
+              <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
+                <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+                  Leave Report
+                </h1>
+                <div className="flex justify-center">
+                  <LeaveChart leaveData={data} />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={generatePDF}
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+              >
+                Download PDF
+              </button>
+            </div>
+          </div>
         </>
       )}
     </>

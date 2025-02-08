@@ -102,7 +102,7 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({
             onChange={(e) => onYearChange(parseInt(e.target.value, 10))}
           >
             {Array.from({ length: 10 }, (_, index) => {
-              const yearOption = 2025 + index;
+              const yearOption = 2024 + index;
               return (
                 <option key={yearOption} value={yearOption}>
                   {yearOption}

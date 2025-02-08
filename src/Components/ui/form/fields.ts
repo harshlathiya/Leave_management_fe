@@ -69,7 +69,7 @@ const formFields = {
   requestToId: {
     id: "requestToId",
     name: "requestToId",
-    title: "RequestToId",
+    title: "Request To Faculty/Hod",
     type: "select",
     options: [{ label: "Faculty/Hod", value: "2" }],
   },

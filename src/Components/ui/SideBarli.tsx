@@ -42,6 +42,10 @@ function SideBarLi({ user }: { user: { user: User } }) {
       href: "/user/manage/manageleave",
     },
     {
+      title: "Leave Report",
+      href: "/user/admin/report",
+    },
+    {
       title: "Student List",
       href: "/user/manage/userlist",
     },
@@ -56,7 +60,6 @@ function SideBarLi({ user }: { user: { user: User } }) {
       href: "/dashboard",
     },
   ];
- 
 
   const guest: { title: string; href: string }[] = [
     {
@@ -73,12 +76,12 @@ function SideBarLi({ user }: { user: { user: User } }) {
     userRole === "Guest"
       ? guest
       : userRole === "student"
-        ? student
-        : userRole === "faculty"
-          ? faculty
-          : userRole === "admin"
-            ? admin
-            : null;
+      ? student
+      : userRole === "faculty"
+      ? faculty
+      : userRole === "admin"
+      ? admin
+      : null;
   return (
     <>
       {userRole !== "Guest" ? (
