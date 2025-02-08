@@ -59,7 +59,9 @@ export default function DemoPage() {
           (sort: SortType) =>
             `${sort.id.replace("_", ".")}:${sort.desc ? "desc" : "asc"}`
         );
-        const url = `/user/studentList?${searchQuery}&page=${currentPage}&sort=${sortParams.join(",")}`;
+        const url = `/user/studentList?${searchQuery}&page=${currentPage}&sort=${sortParams.join(
+          ","
+        )}`;
         const result = await getApiCall(url);
         if (result?.data?.userList) {
           setData(result.data.userList);
@@ -81,10 +83,7 @@ export default function DemoPage() {
       try {
         if (editUserData) {
           setLoading(true);
-          const result = await putApiCall(
-            `/user/${editUserData?.id}`,
-            values
-          );
+          const result = await putApiCall(`/user/${editUserData?.id}`, values);
           if (result?.status == 200) {
             setLoading(false);
             toast.success("Update successful");
@@ -112,6 +111,7 @@ export default function DemoPage() {
       ) : (
         <>
           <div className="p-4">
+            <div>Student List</div>
             <DataTable
               columns={getColumns(setViewModel, setEditUserData, formik)}
               data={data}
@@ -183,9 +183,7 @@ export default function DemoPage() {
                                   "Are you sure you want to Delete User?"
                                 );
                                 if (sure) {
-                                  deleteUser(
-                                    `/user/${editUserData?.id}`
-                                  );
+                                  deleteUser(`/user/${editUserData?.id}`);
                                   setViewModel(false);
                                 }
                               }}

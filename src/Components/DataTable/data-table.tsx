@@ -146,7 +146,7 @@ export function DataTable<T>({
     fetchFilteredData(query, sorting);
   }, [currentPage, sorting, urlType]);
   return (
-    <div className="">
+    <div className="max-w-fit">
       <div className=" items-center py-4 flex">
         <Input
           placeholder="Filter Name..."
@@ -177,8 +177,8 @@ export function DataTable<T>({
       {loading ? (
         <Loading />
       ) : (
-        <div className="rounded-md border min-w-min">
-          <table className="min-w-full divide-y divide-gray-200">
+        <div className="rounded-md border overflow-scroll">
+          <table className=" divide-y divide-gray-200" style={{ width: 200 }}>
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
@@ -216,17 +216,21 @@ export function DataTable<T>({
               {table.getRowModel().rows.length > 0 ? (
                 table.getRowModel().rows.map((row) => (
                   <tr key={row.id}>
-                    {row.getVisibleCells().map((cell) => (
-                      <td
-                        key={cell.id}
-                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    ))}
+                    {row.getVisibleCells().map((cell) => {
+                      const data = flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      );
+                      console.log(data);
+                      return (
+                        <td
+                          key={cell.id}
+                          className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                        >
+                          {data || "-"}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))
               ) : (

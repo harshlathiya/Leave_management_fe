@@ -108,6 +108,7 @@ export default function DemoPage() {
       ) : (
         <>
           <div className="p-4">
+            <div>Faculty List</div>
             <DataTable
               columns={getColumns(setViewModel, setEditUserData, formik)}
               data={data}

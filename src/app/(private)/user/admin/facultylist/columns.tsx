@@ -78,10 +78,18 @@ export const getColumns = (
   {
     accessorKey: "department",
     header: "department",
+    cell: ({ row }: any) => {
+      const department = row.getValue("department");
+      return <div title={department}> {department || "-"}</div>;
+    },
   },
   {
     accessorKey: "div",
     header: "div",
+    cell: ({ row }: any) => {
+      const divName = row.getValue("div");
+      return <div title={divName}> {divName || "-"}</div>;
+    },
   },
   {
     header: "Action",

@@ -48,7 +48,7 @@ export default function RootLayout({
       <UserContextProvider>
         <StoreProvider>
           <html lang="en">
-            <body className={inter.className}>
+            <body className={inter.className} style={{ overflowX: "hidden" }}>
               <UserFetcher />
 
               <div className="">{children}</div>

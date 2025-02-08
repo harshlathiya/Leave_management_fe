@@ -78,10 +78,18 @@ export const getColumns = (
   {
     accessorKey: "grNumber",
     header: "grNumber",
+    cell: ({ row }: any) => {
+      const gr = row.getValue("grNumber");
+      return <div title={gr}>{gr || "-"}</div>;
+    },
   },
   {
     accessorKey: "div",
     header: "div",
+    cell: ({ row }: any) => {
+      const divName = row.getValue("div");
+      return <div title={divName}> {divName || "-"}</div>;
+    },
   },
   {
     header: "Action",

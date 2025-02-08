@@ -26,7 +26,9 @@ export default function DemoPage() {
           (sort: SortType) =>
             `${sort.id.replace("_", ".")}:${sort.desc ? "desc" : "asc"}`
         );
-        const url = `/leave/userLeaveStatus?${searchQuery}&page=${currentPage}&sort=${sortParams.join(",")}`;
+        const url = `/leave/userLeaveStatus?${searchQuery}&page=${currentPage}&sort=${sortParams.join(
+          ","
+        )}`;
         const result = await getApiCall(url);
         if (result?.data?.leaveStatus) {
           setData(result.data.leaveStatus);
