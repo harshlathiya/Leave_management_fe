@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pagination-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-button:hover {
+  background-color: #0056b3;
+}
+
+.year-selector {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day,
+.day-title,
+.day.empty {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 1rem;
+  min-height: 100px; /* Ensure consistent height */
+}
+
+.date {
+  font-weight: bold;
+}
+
+.leaves {
+  margin-top: 0.5rem;
+}
+
+.leave {
+  padding: 0.25rem;
+  border-radius: 3px;
+  margin-bottom: 0.25rem;
+}
+
+.bg-green-500 {
+  background-color: green;
+  color: white;
+}
+
+.bg-yellow-500 {
+  background-color: yellow;
+  color: black;
+}
+
+.bg-red-500 {
+  background-color: red;
+  color: white;
+}
+
+.day-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+.empty {
+  background-color: #f9f9f9;
+}
+
+.day.today {
+  background-color: #ffeb3b; /* Highlight color for the current date */
+}
+
+.top-nav-spacer{
+  margin-bottom: 55px;
+}  
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
