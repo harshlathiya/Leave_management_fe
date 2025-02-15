@@ -29,8 +29,9 @@ const confirmPasswordValidation = Yup.string()
 const idValidation = requiredNumber("ID");
 const nameValidation = stringValidation(3, 20, "Name");
 const addressValidation = stringValidation(3, 200, "Address");
-const phoneValidation = requiredNumber("Phone number");
 const genderValidation = requiredString("Gender");
+const phoneValidation = requiredNumber("Phone number");
+const numberValidation = requiredNumber("Number Required");
 const imageValidation = Yup.mixed().required("Image is required");
 const reasonValidation = stringValidation(3, 200, "Reason");
 const leaveTypeValidation = requiredString("Leave type");
@@ -41,6 +42,14 @@ const departmentValidation = stringValidationOp(0, 15, "Department");
 const grNumberValidation = stringValidationOp(0, 15, "Gr Number");
 function useModelValidation(type: string) {
   switch (type) {
+    case "balance":
+      return Yup.object({
+        totalLeave: numberValidation,
+        availableLeave: numberValidation,
+        usedLeave: numberValidation,
+        totalWorkingDays: numberValidation,
+        academicYear: numberValidation,
+      });
     case "add_student":
       return Yup.object({
         name: nameValidation,

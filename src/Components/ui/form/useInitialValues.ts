@@ -2,6 +2,15 @@ function useInitialValues(type: string) {
   let initialValues: any = {};
 
   switch (type) {
+    case "balance":
+      initialValues = {
+        totalLeave: "",
+        availableLeave: "",
+        usedLeave: "",
+        totalWorkingDays: "",
+        academicYear: "",
+      };
+      break;
     case "add_student":
       initialValues = {
         name: "",

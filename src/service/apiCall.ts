@@ -77,3 +77,16 @@ export const putApiCall = async (url: string, data: any) => {
     return error?.response?.data;
   }
 };
+
+export const putApiCallBasic = async (url: string, data: any) => {
+  try {
+    const res: any = await apiClient.put(url, data);
+    return res;
+  } catch (error: any) {
+    console.error(error);
+    if (error?.response?.status === 401) {
+      await HandleLogout();
+    }
+    return error?.response?.data;
+  }
+};

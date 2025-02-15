@@ -41,6 +41,7 @@ export type LeaveDetails = {
   email: string;
   name: string;
   userId: number;
+  id: number;
 };
 
 export interface User {

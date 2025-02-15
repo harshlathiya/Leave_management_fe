@@ -46,6 +46,10 @@ function SideBarLi({ user }: { user: { user: User } }) {
       href: "/user/admin/report",
     },
     {
+      title: "Leave Balance",
+      href: "/user/admin/balance",
+    },
+    {
       title: "Student List",
       href: "/user/manage/userlist",
     },

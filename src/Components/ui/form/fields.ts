@@ -83,6 +83,36 @@ const formFields = {
       { label: "Faculty", value: "3" },
     ],
   },
+  availableLeave: {
+    id: "availableLeave",
+    name: "availableLeave",
+    title: "Available Leave",
+    type: "number",
+  },
+  usedLeave: {
+    id: "usedLeave",
+    name: "usedLeave",
+    title: "Used Leave",
+    type: "number",
+  },
+  totalWorkingDays: {
+    id: "totalWorkingDays",
+    name: "totalWorkingDays",
+    title: "Total Working Days",
+    type: "number",
+  },
+  academicYear: {
+    id: "academicYear",
+    name: "academicYear",
+    title: "Academic Year",
+    type: "number",
+  },
+  attendancePercentage: {
+    id: "attendancePercentage",
+    name: "attendancePercentage",
+    title: "Attendance Percentage",
+    type: "number",
+  },
 };
 
 // Specific form configurations using the common form fields
@@ -112,6 +142,13 @@ export const editUser = [
   formFields.grNumber,
   formFields.department,
   formFields.image,
+];
+
+export const editBalance = [
+  formFields.availableLeave,
+  formFields.usedLeave,
+  formFields.totalWorkingDays,
+  formFields.academicYear,
 ];
 
 export const signUp = [

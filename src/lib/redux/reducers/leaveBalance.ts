@@ -10,6 +10,7 @@ export interface LeaveBalanceState {
   totalWorkingDays: number;
   attendancePercentage: number;
   academicYear: string;
+  id?: number;
 }
 
 const initialState: LeaveBalanceState = {
