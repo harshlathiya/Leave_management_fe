@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Loading from "@/Components/Loading";
 import { SortType, User } from "@/Utils/types";
 import Pagination from "@/Components/DataTable/Pagination";
+import { useUserContext } from "@/app/context/userContext";
 export default function DemoPage() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -15,7 +16,8 @@ export default function DemoPage() {
   const [reloadData, setReloadData] = React.useState(false);
   const [query, setQuery] = useState("");
   const [getSorting, setGetSorting] = useState("");
-
+  const [user] = useUserContext();
+    const role: any = user?.user;
   useEffect(() => {
     const fetchLeaveData = async () => {
       setLoading(true);
@@ -50,7 +52,7 @@ export default function DemoPage() {
         <>
           <div className="p-4">
             <DataTable
-              columns={getColumns(setReloadData)}
+              columns={getColumns(setReloadData,role)}
               data={data}
               setData={setData}
               currentPage={currentPage}

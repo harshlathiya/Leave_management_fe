@@ -120,6 +120,13 @@ export const getColumns = (setLoading:any) => [
                   >
                     Reject
                   </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      await updateLeaveData(`/leave/leaveDelete/${leave.id}`);
+                    }}
+                  >
+                    Delete
+                  </DropdownMenuItem>
                 </>
               )}
             </DropdownMenuContent>

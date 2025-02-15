@@ -4,6 +4,7 @@ import moment from "moment";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -18,7 +19,8 @@ interface TableColumn {
   cell?: (props: { row: any }) => JSX.Element;
 }
 export const getColumns = (
-  setReloadData: (value: any) => void
+  setReloadData: (value: any) => void,
+  role: string
 ): TableColumn[] => [
   {
     accessorKey: "id",
@@ -102,6 +104,27 @@ export const getColumns = (
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <div>
+                {leave.status === "Pending" || role === "student" ? (
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      await updateLeaveData(
+                        `/leave/leaveDeleteStudent/${leave.id}`
+                      );
+                    }}
+                  >
+                    Delete
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      await updateLeaveData(`/leave/leaveDelete/${leave.id}`);
+                    }}
+                  >
+                    Delete
+                  </DropdownMenuItem>
+                )}
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
         </>
