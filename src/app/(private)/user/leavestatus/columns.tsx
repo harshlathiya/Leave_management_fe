@@ -20,7 +20,8 @@ interface TableColumn {
 }
 export const getColumns = (
   setReloadData: (value: any) => void,
-  role: string
+  role: string,
+  setRefresh: (value: any) => void
 ): TableColumn[] => [
   {
     accessorKey: "id",
@@ -84,11 +85,13 @@ export const getColumns = (
           const result = await getApiCall(url);
           if (result?.status == 200) {
             toast.success(result.data.message);
-            setReloadData((prev: boolean) => !prev);
+            setRefresh((prev: any) => !prev);
           } else {
             toast.error(result.message);
           }
+          setReloadData((prev: boolean) => !prev);
         } catch (error) {
+          setReloadData((prev: boolean) => !prev);
           console.error("Error:", error);
           toast.error("An error occurred. Please try again.");
         }

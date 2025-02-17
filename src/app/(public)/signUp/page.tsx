@@ -57,7 +57,7 @@ const SignUp = () => {
                 Sign Up
               </button>
               <Link href="/login" className="text-sm mt-10 text-blue-700 ">
-                 Already have an Account Login ?
+                Already have an Account Login ?
               </Link>
             </div>
           )}
