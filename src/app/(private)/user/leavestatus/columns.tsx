@@ -108,7 +108,7 @@ export const getColumns = (
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <div>
-                {leave.status === "Pending" || role === "student" ? (
+                {leave.status === "Pending" && role === "student" && (
                   <DropdownMenuItem
                     onClick={async () => {
                       await updateLeaveData(
@@ -118,7 +118,8 @@ export const getColumns = (
                   >
                     Delete
                   </DropdownMenuItem>
-                ) : (
+                ) }
+                {leave.status === "Pending" && role === "faculty" && (
                   <DropdownMenuItem
                     onClick={async () => {
                       await updateLeaveData(`/leave/leaveDelete/${leave.id}`);
